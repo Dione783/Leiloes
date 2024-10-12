@@ -27,7 +27,6 @@ public class ProdutosDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     public ArrayList<ProdutosDTO> listarProdutos(){
@@ -49,6 +48,21 @@ public class ProdutosDAO {
         }
         JOptionPane.showMessageDialog(null,"Erro resultset");
         return null;
+    }
+
+    void venderProduto(int parseInt) {
+        try {
+            System.out.println(parseInt);
+            conn = new conectaDAO().connectDB();
+            String sql = "UPDATE produtos SET status = ? WHERE id = ?";
+            prep = conn.prepareStatement(sql);
+            prep.setString(1,"Vendido");
+            prep.setInt(2,parseInt);
+            prep.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro na venda do produto:");
+            System.out.println(ex.getMessage());
+        }
     }
     
 }
