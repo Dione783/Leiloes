@@ -82,7 +82,6 @@ public class ProdutosDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro resultset");
         }
-        JOptionPane.showMessageDialog(null, "Erro resultset");
         return null;
     }
 
